@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import { shuffle } from "lodash";
+import Songs from './Songs';
 
 const colors = [
     "from-indigo-500",
@@ -39,8 +40,22 @@ function Center() {
         <section 
         className={`flex items-end space-x-7 bg-gradient-to-b
          to-black ${color} h-80 text-white padding-8 `}>
-            <h1>hello</h1>
+
+            {/* <img 
+            className='h-44 w-44 shadow-2xl' 
+            src={playlist?.images?.[0]?.url} 
+            alt="playlist img" 
+            />
+             */}
+            <div>
+                {/* <p>PLAYLIST</p>
+                <h1 className='text-2xl md:text-3xl xl:text-5xl'>{playlist?.name}</h1> */}
+            </div>
         </section>
+
+        <div>
+            <Songs />
+        </div>
     </div>
   )
 }
