@@ -1,17 +1,19 @@
 import { HomeIcon, SearchIcon, RssIcon, HeartIcon, LibraryIcon, PlusCircleIcon } from "@heroicons/react/outline";
-import SpotifyApi from "@/LIB/spotify";
+// import SpotifyApi from "@/LIB/spotify";
 import { signOut, useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { playlistIdState } from "@/atoms/playlistAtom";
 import useSpotify from "@/hooks/useSpotify";
+import { Playlist } from "@/types/playlist";
+import { PlaylistObjectSimplified } from "spotify-web-api-node-typings";
 
 function Sidebar() {
-    // const SpotifyApi = useSpotify();
+    const SpotifyApi = useSpotify();
     const { data: session, status } = useSession();
-    const [playlists, setPlaylists] = useState<any>([]);
+    const [playlists, setPlaylists] = useState<PlaylistObjectSimplified[] | any>([]);
     // const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
-    const [playlistId, setPlaylistId] = useState(null);
+    const [playlistId, setPlaylistId] = useState<string | null>(null);
 
     useEffect(() => {
         if (SpotifyApi.getAccessToken()) {
@@ -19,9 +21,8 @@ function Sidebar() {
                 setPlaylists(data.body.items);
             });
         }
-        console.log("playlists", playlists);
-    }, [session, playlists]);
-    console.log("me");
+    }, [session, SpotifyApi]);
+    // console.log("playlists", playlists);
     return (
         <div className="text-gray-500 p-5 text-sm lg:text-xm border-r border-gray-900 overflow-y-scroll scrollbar-hide  h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex">
             <div className="space-y-4">
@@ -59,10 +60,9 @@ function Sidebar() {
                 <hr className="border-t-[0.1px] border-gray-900 " />
 
                 {/* playlist.... */}
-
-                {playlists.map((playlist: any) => (
-                    <p key={playlist.id} onClick={() => setPlaylistId(playlist.id)} className="cursor-pointer hover:text-white">
-                        {playlists.name}
+                {playlists.map((playlist: PlaylistObjectSimplified) => (
+                    <p key={playlist.id} className="cursor-pointer hover:text-white">
+                        {playlist.name}
                     </p>
                 ))}
             </div>

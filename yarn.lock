@@ -2311,6 +2311,11 @@ source-map-js@^1.0.2:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
+spotify-web-api-node-typings@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/spotify-web-api-node-typings/-/spotify-web-api-node-typings-0.0.6.tgz#c3f0df8a61217d4db104182b7a2af787faef13a6"
+  integrity sha512-2m1zso+iK/VX6yhd9m/7TRjsCjl1zCIXaXJSzVTcXB9cC+hvzAVeMpHvaTkrqrLSi2VnM6/8GQ2Wg9qyS0Cr0g==
+
 spotify-web-api-node@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/spotify-web-api-node/-/spotify-web-api-node-5.0.2.tgz#683669b3ccc046a5a357300f151df93a2b3539fe"
