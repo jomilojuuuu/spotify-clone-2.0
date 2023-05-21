@@ -13,9 +13,8 @@ function Sidebar() {
     const { data: session, status } = useSession();
     const [playlists, setPlaylists] = useState([]);
     const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
-    const [playlistId, setPlaylistId] = useState(null)
-    console.log("you picked playlist >>>>", playlistId)
-
+    // const [playlistId, setPlaylistId] = useState(null)
+    
     useEffect(() => {
         if (SpotifyApi.getAccessToken()) {
             SpotifyApi.getUserPlaylists().then((data) => {
@@ -23,6 +22,7 @@ function Sidebar() {
             });
         }
     }, [session, SpotifyApi]);
+    console.log("me")
     return (
         <div className="text-gray-500 p-5 text-sm lg:text-xm border-r border-gray-900 overflow-y-scroll scrollbar-hide  h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex">
             <div className="space-y-4">
@@ -60,13 +60,14 @@ function Sidebar() {
                 <hr className="border-t-[0.1px] border-gray-900 " />
 
                 {/* playlist.... */}
-                {playlists.map((playlist) => (
-                    <p key={playlist.id} onClick={() = > setPlaylistId= { playlist.id }} className="cursor-pointer hover:text-white">{playlist.name}</p>
-                ))}
 
-        </div>
+                {playlists.map((playlist) => (
+                    <p key={playlist.id} onClick={() => setPlaylistId = { playlist.id }} className="cursor-pointer hover:text-white">{playlists.name}</p>
+                ))}
+            </div>
         </div > 
     );
 }
 
 export default Sidebar;
+
