@@ -2,27 +2,26 @@ import { HomeIcon, SearchIcon, RssIcon, HeartIcon, LibraryIcon, PlusCircleIcon }
 import SpotifyApi from "@/LIB/spotify";
 import { signOut, useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil"
+import { useRecoilState } from "recoil";
 import { playlistIdState } from "@/atoms/playlistAtom";
 import useSpotify from "@/hooks/useSpotify";
 
-
-
 function Sidebar() {
-    const SpotifyApi = useSpotify()
+    // const SpotifyApi = useSpotify();
     const { data: session, status } = useSession();
-    const [playlists, setPlaylists] = useState([]);
-    const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
-    // const [playlistId, setPlaylistId] = useState(null)
-    
+    const [playlists, setPlaylists] = useState<any>([]);
+    // const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
+    const [playlistId, setPlaylistId] = useState(null);
+
     useEffect(() => {
         if (SpotifyApi.getAccessToken()) {
             SpotifyApi.getUserPlaylists().then((data) => {
                 setPlaylists(data.body.items);
             });
         }
-    }, [session, SpotifyApi]);
-    console.log("me")
+        console.log("playlists", playlists);
+    }, [session, playlists]);
+    console.log("me");
     return (
         <div className="text-gray-500 p-5 text-sm lg:text-xm border-r border-gray-900 overflow-y-scroll scrollbar-hide  h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex">
             <div className="space-y-4">
@@ -61,13 +60,14 @@ function Sidebar() {
 
                 {/* playlist.... */}
 
-                {playlists.map((playlist) => (
-                    <p key={playlist.id} onClick={() => setPlaylistId = { playlist.id }} className="cursor-pointer hover:text-white">{playlists.name}</p>
+                {playlists.map((playlist: any) => (
+                    <p key={playlist.id} onClick={() => setPlaylistId(playlist.id)} className="cursor-pointer hover:text-white">
+                        {playlists.name}
+                    </p>
                 ))}
             </div>
-        </div > 
+        </div>
     );
 }
 
 export default Sidebar;
-

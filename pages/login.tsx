@@ -10,7 +10,7 @@ export default function Login({ providers }: Props) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="w-52 mb-5" src="https://links.papareact.com/9xl" alt="logo" />
 
-            {Object.values(providers).map((provider) => (
+            {Object.values(providers)?.map((provider) => (
                 <div key={provider.name}>
                     <button className="bg-[#18D860] text-white rounded-full p-5" onClick={() => signIn(provider.id, { callbackUrl: "/" })}>
                         Login with {provider.name}
