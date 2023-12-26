@@ -41,7 +41,7 @@ function Center() {
   console.log(playlist);
 
   return (
-    <div className="flex-grow ">
+    <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide">
       <header className="absolute top-5 right-8">
         <div
           className="flex items-center
@@ -60,7 +60,7 @@ function Center() {
 
       <section
         className={`flex items-end space-x-7 bg-gradient-to-b
-         to-black ${color} h-80 text-white padding-8 `}
+         to-black ${color} h-80 text-white p-8 `}
       >
         <img
           className="h-44 w-44 shadow-2xl"
