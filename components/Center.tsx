@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { shuffle } from "lodash";
 import Songs from "./Songs";
@@ -46,7 +46,8 @@ function Center() {
         <div
           className="flex items-center
              bg-red-500 space-x-3 opacity-90 hover:opacity-80 cursor-pointer 
-             rounded-full p-1 pr-2"
+             rounded-full p-1 pr-2 text-white"
+          onClick={signOut}
         >
           <img
             className="rounded-full w-10 h-10"
